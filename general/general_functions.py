@@ -5,7 +5,8 @@ import os
 import json
 
 
-# Function that gos at beginning of python script run by GitHub action
+# Function that goes at beginning of python script run by GitHub action and opens the
+# workbook
 def openGoogle():
     credentials_json_string = os.environ.get('credentials_json_string')
     credentials_json = json.loads(base64.b64decode(credentials_json_string))
