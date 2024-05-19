@@ -48,7 +48,7 @@ def make_Google_sheets(url):
 # Opening the workbook
 book = general_functions.openGoogle()
 
-files = ['finance_ministry_data/2015.xlsx']
+files = ['finance_ministry_data/2016.xlsx']
 # files = ['finance_ministry_data/2015.xlsx', 'finance_ministry_data/2016.xlsx',
 #          'finance_ministry_data/2017.xlsx', 'finance_ministry_data/2018.xlsx',
 #          'finance_ministry_data/2019.xlsx', 'finance_ministry_data/2020.xlsx',
