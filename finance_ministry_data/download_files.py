@@ -57,12 +57,12 @@ try:
         else:
             name = 2024
 
-            # Get the current directory
-            current_directory = os.getcwd()
-            # Define the file path
-            file_path = os.path.join(current_directory, f"{name}.xlsx")
-            # Save DataFrame to Excel without index column
-            df.to_excel(file_path, index=False)
+        # Get the current directory
+        current_directory = os.getcwd()
+        # Define the file path
+        file_path = os.path.join(current_directory, f"{name}.xlsx")
+        # Save DataFrame to Excel without index column
+        df.to_excel(file_path, index=False)
 
 except:
     print('somthing went wrong')
