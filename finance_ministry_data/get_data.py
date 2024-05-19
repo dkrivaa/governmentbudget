@@ -109,7 +109,9 @@ files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_
 
 for file in files:
     name, df = make_Google_sheets_2024(file)
-    print(name)
+    # if worksheet exist then delete and make new with the same name with updated data
+    if f'{book.name}':
+        book.del_worksheet(f'{book.name}')
     book.add_worksheet(title=f'{name}', rows=len(df) + 1, cols=len(df.columns) + 1)
     set_with_dataframe(f'{book.name}', df)
 
