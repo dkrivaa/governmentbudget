@@ -11,10 +11,10 @@ from general import general_functions
 
 
 # Getting the raw data from Excel files
-def make_Google_sheets(url):
+def make_Google_sheets(my_url):
     try:
         # Getting data from url
-        response = requests.get(url)
+        response = requests.get(my_url)
         print(response.status_code)
         if response.status_code == 200:
             # Wrap the byte string in a BytesIO object
@@ -74,7 +74,7 @@ def make_Google_sheets_2024(file):
         else:
             name = 2024
 
-        return name
+        return name, df
     except Exception as e:
         print("Error occurred:", e)
         return None
@@ -100,15 +100,15 @@ url2015 = 'https://www.gov.il/BlobFolder/policy/tableau/he/tableau_BudgetData201
 url_list = [url2015, url2016, url2017, url2018, url2019, url2020, url2021, url2022, url2023]
 files = ['before0710original2024.xlsx', 'new2024.xlsx']
 
-for url in url_list:
-    name = make_Google_sheets(url)
-    print(name)
-    # book.add_worksheet(title=name, rows=len(df)+1, cols=len(df.columns)+1)
-    # set_with_dataframe(book.name, df)
-
-
-# for file in files:
-#     name, df = make_Google_sheets_2024(file)
-#     book.add_worksheet(title=name, rows=len(df) + 1, cols=len(df.columns) + 1)
+# for url in url_list:
+#     name, df = make_Google_sheets(url)
+#     print(name)
+#     book.add_worksheet(title=name, rows=len(df)+1, cols=len(df.columns)+1)
 #     set_with_dataframe(book.name, df)
+
+
+for file in files:
+    name, df = make_Google_sheets_2024(file)
+    book.add_worksheet(title=name, rows=len(df) + 1, cols=len(df.columns) + 1)
+    set_with_dataframe(book.name, df)
 
