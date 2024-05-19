@@ -19,8 +19,6 @@ types = general_functions.budget_types()
 # making dataframe with all mops data for all years
 df = get_as_dataframe(book.worksheet('mops'))
 
-print(df.iloc[:, 22])
-
 df_ministry = df[df.iloc[:, 9].isin(ministry_codes[0])]
 df_witness = df[df.iloc[:, 9].isin(ministry_codes[1])]
 df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
