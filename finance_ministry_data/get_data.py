@@ -36,7 +36,7 @@ def make_Google_sheets(url):
         if file == files[-1]:
             name = 20241
         else:
-            name = file[:5]
+            name = file[-9:-5]
 
         return name, df
 
