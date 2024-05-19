@@ -28,6 +28,20 @@ def openGoogle():
             available_years.append(str(name))
         except ValueError:
             pass
+
+    # clear result sheet
+    book.worksheet('results').clear()
+
     # return the workbook and list of available years
     return book, available_years
+
+
+def mops_codes():
+    # mops codes for column index = 9
+    ministry_codes = [[750, 5230], [755], [780, 5250], [770, 5240], [760]]
+    return ministry_codes
+
+def wage_codes():
+    # general wage codes - column index 15, column index 17,
+    wage = [1, 30]
 
