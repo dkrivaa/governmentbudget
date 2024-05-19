@@ -8,7 +8,9 @@ from general import general_functions
 
 # Opening workbook
 book = general_functions.openGoogle()
-sheet = book.worksheet('2024')
-
-df = pd.DataFrame(sheet.get_all_records())
-print(len(df))
+sheet_list = book.worksheets()
+print(sheet_list)
+# sheet = book.worksheet('2024')
+#
+# df = pd.DataFrame(sheet.get_all_records())
+# print(len(df))
