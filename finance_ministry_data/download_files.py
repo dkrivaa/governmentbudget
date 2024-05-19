@@ -3,6 +3,7 @@
 import pandas as pd
 import requests
 from io import BytesIO
+import os
 
 
 # Getting the raw data from Excel files and returning list with nested lists of dataframes
@@ -36,7 +37,13 @@ try:
             df = pd.read_excel(excel_buffer)
 
             name = url[-9:-5]
-            df.to_excel(f'{name}.xlsx')
+
+            # Get the current directory
+            current_directory = os.getcwd()
+            # Define the file path
+            file_path = os.path.join(current_directory, f"{name}.xlsx")
+            # Save DataFrame to Excel without index column
+            df.to_excel(file_path, index=False)
 
     # 2024 files
     files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_data/new2024.xlsx']
@@ -50,7 +57,12 @@ try:
         else:
             name = 2024
 
-        df.to_excel(f'{name}.xlsx')
+            # Get the current directory
+            current_directory = os.getcwd()
+            # Define the file path
+            file_path = os.path.join(current_directory, f"{name}.xlsx")
+            # Save DataFrame to Excel without index column
+            df.to_excel(file_path, index=False)
 
 except:
     print('somthing went wrong')
