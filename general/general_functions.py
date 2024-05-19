@@ -51,7 +51,7 @@ def wage_codes():
 # codes for types of budgets
 def budget_types():
     # column index 21
-    types = [['מקורי', 'original'], ['מאושר', 'approved'], ['ביצוע', 'executed']]
+    types = ['מקורי', 'מאושר', 'ביצוע']
     return types
 
 

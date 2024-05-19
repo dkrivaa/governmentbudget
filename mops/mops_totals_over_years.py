@@ -13,7 +13,7 @@ book, available_years = general_functions.openGoogle()
 ministry_codes = general_functions.mops_codes()
 # wage codes - columns index 15 and 17 - returns list of codes
 wage_codes = general_functions.wage_codes()
-# budget types - returns list of list of codes
+# budget types - returns list of lists of codes
 types = general_functions.budget_types()
 
 # making dataframe with all mops data for all years
@@ -25,11 +25,20 @@ df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
 df_prison = df[df.iloc[:, 9].isin(ministry_codes[3])]
 df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 
-print('ministry', len(df_ministry))
-print('witness', len(df_witness))
-print('police', len(df_police))
-print('prison', len(df_prison))
-print('fire', len(df_fire))
+df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
+
+# for data in df_list:
+#     for year in available_years:
+#         for budget_type in types:
+#             df_temp = data[data.iloc[:, 0] == year & data.iloc[:, 21] == budget_type]
+#             budget_sum = df.temp.iloc[:, 22].sum()
+
+budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == year) & (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum())
+               for data in df_list
+               for year in available_years
+               for budget_type in types]
+
+print(budget_sums)
 
 
 
