@@ -15,6 +15,7 @@ def make_Google_sheets(url):
     try:
         # Getting data from url
         response = requests.get(url)
+        print(response.status_code)
         if response.status_code == 200:
             # Wrap the byte string in a BytesIO object
             excel_buffer = BytesIO(response.content)
