@@ -102,6 +102,7 @@ files = ['before0710original2024.xlsx', 'new2024.xlsx']
 
 for url in url_list:
     name = make_Google_sheets(url)
+    print(name)
     # book.add_worksheet(title=name, rows=len(df)+1, cols=len(df.columns)+1)
     # set_with_dataframe(book.name, df)
 
