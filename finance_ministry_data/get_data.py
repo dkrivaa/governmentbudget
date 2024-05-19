@@ -11,10 +11,10 @@ from general import general_functions
 
 
 # Getting the raw data from Excel files
-def make_Google_sheets(my_url):
+def make_Google_sheets(url):
     try:
         # Getting data from url
-        response = requests.get(my_url)
+        response = requests.get(url)
         print(response.status_code)
         if response.status_code == 200:
             # Wrap the byte string in a BytesIO object
@@ -98,7 +98,7 @@ url2015 = 'https://www.gov.il/BlobFolder/policy/tableau/he/tableau_BudgetData201
 # url20241 = 'C:\\Users\danny\Desktop\BudgetData\original2024Before0710231024.xlsx'
 
 url_list = [url2015, url2016, url2017, url2018, url2019, url2020, url2021, url2022, url2023]
-files = ['before0710original2024.xlsx', 'new2024.xlsx']
+files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_data/new2024.xlsx']
 
 # for url in url_list:
 #     name, df = make_Google_sheets(url)
