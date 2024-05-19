@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import gspread
+from gspread_dataframe import get_as_dataframe, set_with_dataframe
 import pandas as pd
 import requests
 from io import BytesIO
@@ -95,9 +95,11 @@ files = ['before0710original2024.xlsx', 'new2024.xlsx']
 for url in url_list:
     name, df = make_Google_sheets(url)
     book.add_worksheet(title=name, rows=len(df)+1, cols=len(df.columns)+1)
+    set_with_dataframe(book.name, df)
+
 
 for file in files:
     name, df = make_Google_sheets_2024(file)
     book.add_worksheet(title=name, rows=len(df) + 1, cols=len(df.columns) + 1)
-
+    set_with_dataframe(book.name, df)
 

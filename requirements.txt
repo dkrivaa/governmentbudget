@@ -1,4 +1,5 @@
 gspread
+gspread_dataframe
 google-auth
 requests
 pandas
