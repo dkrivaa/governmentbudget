@@ -2,6 +2,7 @@ import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 import pandas as pd
 import requests
@@ -110,8 +111,12 @@ files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_
 for file in files:
     name, df = make_Google_sheets_2024(file)
     # if worksheet exist then delete and make new with the same name with updated data
-    if book.worksheet(f'{name}'):
-        book.del_worksheet(f'{name}')
+    try:
+        if book.worksheet(f'{name}'):
+            book.del_worksheet(f'{name}')
+    except gspread.exceptions.WorksheetNotFound:
+        pass
+
     book.add_worksheet(title=f'{name}', rows=len(df) + 1, cols=len(df.columns) + 1)
     set_with_dataframe(book.worksheet(f'{name}'), df)
 
