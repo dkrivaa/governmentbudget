@@ -24,7 +24,7 @@ df_witness = df[df.iloc[:, 9].isin(ministry_codes[1])]
 df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
 df_prison = df[df.iloc[:, 9].isin(ministry_codes[3])]
 df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
-
+print(df_ministry.head())
 df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 
 budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == year) &
