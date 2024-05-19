@@ -1,0 +1,36 @@
+name: make mops google sheet
+
+on:
+  workflow_dispatch:
+
+env:
+  # Google sheet secrets
+  credentials_json_string: ${{ secrets.CREDENTIALS_JSON }}
+  sheet_id: ${{ secrets.SHEET_ID }}
+
+jobs:
+  run_python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ubuntu-latest-python-${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}-basic
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install -r requirements.txt 
+
+      - name: make Google Sheet for all years
+        run: |
+          python mops/mops_data.py
