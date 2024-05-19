@@ -109,6 +109,7 @@ files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_
 
 for file in files:
     name, df = make_Google_sheets_2024(file)
+    print(name)
     book.add_worksheet(title=f'{name}', rows=len(df) + 1, cols=len(df.columns) + 1)
     set_with_dataframe(f'{book.name}', df)
 
