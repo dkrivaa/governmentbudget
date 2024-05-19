@@ -41,7 +41,17 @@ def mops_codes():
     ministry_codes = [[750, 5230], [755], [780, 5250], [770, 5240], [760]]
     return ministry_codes
 
+
+# codes to get wage records
 def wage_codes():
     # general wage codes - column index 15, column index 17,
     wage = [1, 30]
+
+
+# codes for types of budgets
+def budget_types():
+    # column index 21
+    types = [['מקורי', 'original'], ['מאושר', 'approved'], ['ביצוע', 'executed']]
+    return types
+
 
