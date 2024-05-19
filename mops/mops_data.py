@@ -10,7 +10,7 @@ from general import general_functions
 # Opening workbook
 book, available_years = general_functions.openGoogle()
 
-mops_df = pd.DataFrame
+mops_df = pd.DataFrame()
 # Extracting mops data for each year
 for year in available_years:
     sheet = book.worksheet(year)
