@@ -1,4 +1,4 @@
-name: make mops google sheet
+name: mops totals over years
 
 on:
   workflow_dispatch:
@@ -31,6 +31,6 @@ jobs:
         run: |
           pip install -r requirements.txt 
 
-      - name: make Google Sheet for all years
+      - name: mops totals for all years
         run: |
           python mops/mops_totals_over_years.py
