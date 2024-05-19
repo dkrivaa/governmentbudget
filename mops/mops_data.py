@@ -7,9 +7,9 @@ import pandas as pd
 from general import general_functions
 
 # Opening workbook
-book = general_functions.openGoogle()
-sheet_list = book.worksheets()
-print(sheet_list[1])
+book, available_years = general_functions.openGoogle()
+
+print(available_years)
 # sheet = book.worksheet('2024')
 #
 # df = pd.DataFrame(sheet.get_all_records())

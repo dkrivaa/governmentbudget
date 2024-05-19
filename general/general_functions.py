@@ -18,6 +18,16 @@ def openGoogle():
     client = gspread.authorize(creds)
 
     book = client.open_by_key(sheet_id)
-    # return the workbook
-    return book
+
+    # making list of sheets with 'raw data' from Finance Ministry
+    sheets_list = book.worksheets()
+    available_years = []
+    for sheet in sheets_list:
+        try:
+            name = int(sheet.title)
+            available_years.append(str(name))
+        except ValueError:
+            pass
+    # return the workbook and list of available years
+    return book, available_years
 
