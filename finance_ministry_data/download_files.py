@@ -1,5 +1,4 @@
 # THIS FILE IS RUN MANUALLY FROM LOCAL PYTHON
-
 import pandas as pd
 import requests
 from io import BytesIO
@@ -46,7 +45,7 @@ try:
             df.to_excel(file_path, index=False)
 
     # 2024 files
-    files = ['finance_ministry_data/before0710original2024.xlsx', 'finance_ministry_data/new2024.xlsx']
+    files = ['before0710original2024.xlsx', 'new2024.xlsx']
 
     for file in files:
         # Make dataframe
