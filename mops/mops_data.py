@@ -19,6 +19,7 @@ for year in available_years:
 
     mops_df = pd.concat([mops_df, temp_df], ignore_index=True)
 
+print('length of mops dataframe', len(mops_df))
 # Make MOPS worksheet in Google file
 try:
     if book.worksheet('mops'):
