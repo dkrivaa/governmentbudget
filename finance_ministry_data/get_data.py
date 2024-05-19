@@ -113,7 +113,7 @@ for file in files:
     # if worksheet exist then delete and make new with the same name with updated data
     try:
         if book.worksheet(f'{name}'):
-            book.del_worksheet(f'{name}')
+            book.del_worksheet(book.worksheet(f'{name}'))
     except gspread.exceptions.WorksheetNotFound:
         pass
 
