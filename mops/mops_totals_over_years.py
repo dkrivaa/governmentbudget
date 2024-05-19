@@ -16,6 +16,7 @@ wage_codes = general_functions.wage_codes()
 
 # making dataframe with all mops data for all years
 df = get_as_dataframe(book.worksheet('mops'))
+print(len(df))
 
 
 
