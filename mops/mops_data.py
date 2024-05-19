@@ -9,8 +9,7 @@ from general import general_functions
 # Opening workbook
 book, available_years = general_functions.openGoogle()
 
-print(available_years)
-# sheet = book.worksheet('2024')
-#
-# df = pd.DataFrame(sheet.get_all_records())
-# print(len(df))
+for year in available_years:
+    sheet = book.worksheet(year)
+    df = pd.DataFrame(sheet.get_all_records())
+    print(len(df))
