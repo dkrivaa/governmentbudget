@@ -12,13 +12,44 @@ from general import general_functions
 
 # Getting the raw data from Excel files
 def make_Google_sheets(url):
-    # Getting data from url
-    response = requests.get(url)
-    if response.status_code == 200:
-        # Wrap the byte string in a BytesIO object
-        excel_buffer = BytesIO(response.content)
+    try:
+        # Getting data from url
+        response = requests.get(url)
+        if response.status_code == 200:
+            # Wrap the byte string in a BytesIO object
+            excel_buffer = BytesIO(response.content)
+            # Make dataframe
+            df = pd.read_excel(excel_buffer)
+
+            # make budget sums into numbers
+            # list of columns to re-format
+            columns_to_format = [30, 31, 32, 33, 34, 35, 36, 37]
+            for column in columns_to_format:
+                # Step 1: Replace values in the format (20) with the corresponding negative value
+                df[df.columns[column]] = df[df.columns[column]].replace(r'\((.*?)\)', r'-\1', regex=True)
+                # Step 2: Replace '-' with 0
+                df[df.columns[column]] = df[df.columns[column]].replace('-', '0', regex=False)
+                # Step 3: Replace NaN values with 0
+                df[df.columns[column]] = df[df.columns[column]].fillna('0')
+                # Convert to integers
+                df[df.columns[column]] = df[df.columns[column]].astype(float)
+
+            # Drop unnecessary columns
+            columnsToDrop = [3, 6, 11, 14, 17, 20, 23, 26]
+            df = df.drop(df.columns[columnsToDrop], axis=1)
+
+            name = url[-9:-5]
+
+            return name, df
+    except Exception as e:
+        print("Error occurred:", e)
+        return None
+
+
+def make_Google_sheets_2024(file):
+    try:
         # Make dataframe
-        df = pd.read_excel(excel_buffer)
+        df = pd.read_excel(file)
 
         # make budget sums into numbers
         # list of columns to re-format
@@ -37,39 +68,15 @@ def make_Google_sheets(url):
         columnsToDrop = [3, 6, 11, 14, 17, 20, 23, 26]
         df = df.drop(df.columns[columnsToDrop], axis=1)
 
-        name = url[-9:-5]
+        if file == 'before0710original2024.xlsx':
+            name = 20241
+        else:
+            name = 2024
 
         return name, df
-        # df.to_excel(f'{name}.xlsx')
-
-
-def make_Google_sheets_2024(file):
-    # Make dataframe
-    df = pd.read_excel(file)
-
-    # make budget sums into numbers
-    # list of columns to re-format
-    columns_to_format = [30, 31, 32, 33, 34, 35, 36, 37]
-    for column in columns_to_format:
-        # Step 1: Replace values in the format (20) with the corresponding negative value
-        df[df.columns[column]] = df[df.columns[column]].replace(r'\((.*?)\)', r'-\1', regex=True)
-        # Step 2: Replace '-' with 0
-        df[df.columns[column]] = df[df.columns[column]].replace('-', '0', regex=False)
-        # Step 3: Replace NaN values with 0
-        df[df.columns[column]] = df[df.columns[column]].fillna('0')
-        # Convert to integers
-        df[df.columns[column]] = df[df.columns[column]].astype(float)
-
-    # Drop unnecessary columns
-    columnsToDrop = [3, 6, 11, 14, 17, 20, 23, 26]
-    df = df.drop(df.columns[columnsToDrop], axis=1)
-
-    if file == 'before0710original2024.xlsx':
-        name = 20241
-    else:
-        name = 2024
-
-    return name, df
+    except Exception as e:
+        print("Error occurred:", e)
+        return None
 
 
 # Opening the workbook
