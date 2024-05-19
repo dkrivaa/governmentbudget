@@ -48,12 +48,13 @@ def make_Google_sheets(url):
 # Opening the workbook
 book = general_functions.openGoogle()
 
-files = ['finance_ministry_data/2015.xlsx', 'finance_ministry_data/2016.xlsx',
-         'finance_ministry_data/2017.xlsx', 'finance_ministry_data/2018.xlsx',
-         'finance_ministry_data/2019.xlsx', 'finance_ministry_data/2020.xlsx',
-         'finance_ministry_data/2021.xlsx', 'finance_ministry_data/2022.xlsx',
-         'finance_ministry_data/2023.xlsx', 'finance_ministry_data/new2024.xlsx',
-         'finance_ministry_data/before0710original2024.xlsx']
+files = ['finance_ministry_data/2015.xlsx']
+# files = ['finance_ministry_data/2015.xlsx', 'finance_ministry_data/2016.xlsx',
+#          'finance_ministry_data/2017.xlsx', 'finance_ministry_data/2018.xlsx',
+#          'finance_ministry_data/2019.xlsx', 'finance_ministry_data/2020.xlsx',
+#          'finance_ministry_data/2021.xlsx', 'finance_ministry_data/2022.xlsx',
+#          'finance_ministry_data/2023.xlsx', 'finance_ministry_data/new2024.xlsx',
+#          'finance_ministry_data/before0710original2024.xlsx']
 
 for file in files:
     name, df = make_Google_sheets(file)
