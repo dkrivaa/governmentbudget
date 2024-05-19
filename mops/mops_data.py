@@ -17,7 +17,7 @@ for year in available_years:
     df = pd.DataFrame(sheet.get_all_records())
     temp_df = df[df.iloc[:, 3] == '12']
 
-    mops_df = mops_df.append(temp_df, ignore_index=True)
+    mops_df = pd.concat([mops_df, temp_df], ignore_index=True)
 
 # Make MOPS worksheet in Google file
 try:
