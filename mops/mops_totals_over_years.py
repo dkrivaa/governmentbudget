@@ -9,7 +9,6 @@ from general import general_functions
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
-print('available years', available_years)
 # Ministry codes for the various orgs in ministry (column index 9) - returns list with lists of codes
 ministry_codes = general_functions.mops_codes()
 # wage codes - columns index 15 and 17 - returns list of codes
@@ -27,11 +26,15 @@ df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
 df_prison = df[df.iloc[:, 9].isin(ministry_codes[3])]
 df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 
-ministry_budget = [(year, budget_type, df_ministry[(df_ministry.iloc[:, 0] == int(year)) &
-                                        (df_ministry.iloc[:, 21] == budget_type)].iloc[:, 22].sum())
+ministry_budget = [[year, budget_type, df_ministry[(df_ministry.iloc[:, 0] == int(year)) &
+                                        (df_ministry.iloc[:, 21] == budget_type)].iloc[:, 22].sum()]
                     for year in available_years
                     for budget_type in types]
 print('ministry budget', ministry_budget)
+
+ministry_wage = []
+
+
 
 # df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 #
