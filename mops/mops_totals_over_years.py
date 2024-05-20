@@ -38,13 +38,13 @@ total_budget_sums = [[index + 1, year, budget_type,
                      for budget_type in types]
 
 total_wage_sums = [[index + 1, year, budget_type,
-                                        data[(data.iloc[:, 0] == int(year)) &
-                                        (data.iloc[:, 21] == budget_type) &
-                                        (data.iloc[:, 15].isin(wage_codes) |
-                                        data.iloc[:, 15].isin(wage_codes))].iloc[:, 22].sum()]
-                                        for index, data in zip(index_list, df_list)
-                                        for year in available_years
-                                        for budget_type in types]
+                            data[(data.iloc[:, 0] == int(year)) &
+                                 (data.iloc[:, 21] == budget_type) &
+                                 (data.iloc[:, 15].isin(wage_codes) |
+                                  data.iloc[:, 15].isin(wage_codes))].iloc[:, 22].sum()]
+                                for index, data in zip(index_list, df_list)
+                                for year in available_years
+                                for budget_type in types]
 
 print(total_wage_sums)
 # getting list of lists (index (of org df in df_list), year, budget_type, sum of total wages)
