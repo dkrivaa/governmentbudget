@@ -6,6 +6,8 @@ import pandas as pd
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 
 from general import general_functions
+import itertools
+
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
@@ -75,7 +77,7 @@ other = [[inner_totals[0], inner_totals[1], inner_totals[2], (inner_totals[3] - 
 
 def table_lists(array_of_arrays):
     new_list = [[inner_array1[0], inner_array1[1], inner_array1[3], inner_array2[3], inner_array3[3]]
-                for inner_array1, inner_array2, inner_array3 in zip(*[array_of_arrays]*3)
+                for inner_array1, inner_array2, inner_array3 in itertools.combinations(array_of_arrays, 3)
                 if inner_array1[0] == inner_array2[0] == inner_array3[0] and
                 inner_array1[1] == inner_array2[1] == inner_array3[1]]
     return new_list
