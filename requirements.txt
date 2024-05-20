@@ -4,4 +4,3 @@ google-auth
 requests
 pandas
 openpyxl
-itertools
