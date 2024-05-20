@@ -20,6 +20,7 @@ types = general_functions.budget_types()
 # making dataframe with all mops data for all years
 df = get_as_dataframe(book.worksheet('mops'))
 
+# Splitting dataframe into individual organizations dataframes
 df_ministry = df[df.iloc[:, 9].isin(ministry_codes[0])]
 df_witness = df[df.iloc[:, 9].isin(ministry_codes[1])]
 df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
@@ -28,13 +29,12 @@ df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 
 df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 
+# getting list of tuples (year, budget_type, sum)
 total_budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
                                         (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum())
                     for data in df_list
                     for year in available_years
                     for budget_type in types]
-print('total budgets', total_budget_sums)
-
 
 total_wage_sums = []
 
