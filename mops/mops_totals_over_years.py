@@ -37,7 +37,9 @@ total_budget_sums = [[index, year, budget_type,
                      for year in available_years
                      for budget_type in types]
 
+print('total budgets', len(total_budget_sums))
 print('total budgets', total_budget_sums)
+
 
 total_wage_sums = []
 
@@ -60,6 +62,8 @@ for index, data in enumerate(df_list):
                 # Append to total_wage_sums list along with the index
                 total_wage_sums.append([index, year, budget_type, wage_sum])
 
+print('total wages', len(total_wage_sums))
 print('total wages', total_wage_sums)
+
 
 
