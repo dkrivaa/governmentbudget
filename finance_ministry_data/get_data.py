@@ -50,7 +50,7 @@ def make_Google_sheets(url):
 
 
 # Opening the workbook
-book = general_functions.openGoogle()
+book, available_years = general_functions.openGoogle()
 
 files = ['finance_ministry_data/2015.xlsx', 'finance_ministry_data/2016.xlsx',
          'finance_ministry_data/2017.xlsx', 'finance_ministry_data/2018.xlsx',
@@ -64,8 +64,7 @@ for file in files:
     print(name, type(name))
     # if worksheet exist then delete and make new with the same name with updated data
     try:
-        sheet = book.worksheet(f'{name}')
-        book.del_worksheet(sheet)
+        book.del_worksheet(f'{name}')
     except gspread.exceptions.WorksheetNotFound:
         pass
 
