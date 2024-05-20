@@ -15,14 +15,10 @@ mops_df = pd.DataFrame()
 for year in available_years:
     sheet = book.worksheet(year)
     df = pd.DataFrame(sheet.get_all_records())
-    print(year, 'length of year df: ', len(df))
     temp_df = df[df.iloc[:, 3] == 12]
-
-    print(year, 'length of temp_df (mops data)', len(temp_df))
 
     mops_df = pd.concat([mops_df, temp_df], ignore_index=True)
 
-print('length of mops dataframe', len(mops_df))
 # Make MOPS worksheet in Google file
 try:
     book.del_worksheet(book.worksheet('mops'))
