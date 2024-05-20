@@ -67,7 +67,7 @@ totals = [[0, year, budget_type, sum(inner_list[3] for inner_list in total_budge
             for budget_type in types]
 
 # calculating wages for all orgs
-wages = [[0, year, budget_type, sum(inner_list[3] for inner_list in total_budget_sums if
+wages = [[0, year, budget_type, sum(inner_list[3] for inner_list in total_wage_sums if
             inner_list[1] == year and inner_list[2] == budget_type)]
             for year in available_years
             for budget_type in types]
@@ -87,11 +87,7 @@ for inner_list1 in totals:
                           inner_list1[1],
                           inner_list1[2],
                           inner_list1[3] - inner_list2[3]])
-        else:
-            other.append([inner_list1[0],
-                          inner_list1[1],
-                          inner_list1[2],
-                          999])
+
 
 print('totals', totals)
 print('wages', wages)
