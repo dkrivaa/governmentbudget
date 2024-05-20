@@ -27,7 +27,7 @@ jobs:
           key: ubuntu-latest-python-${{ env.pythonLocation }}-${{ hashFiles('requirements.txt') }}-basic
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        # if: steps.cache.outputs.cache-hit != 'true'
         run: |
           pip install -r requirements.txt 
 
