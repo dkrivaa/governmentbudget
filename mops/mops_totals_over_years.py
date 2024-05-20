@@ -73,20 +73,23 @@ other = [[inner_totals[0], inner_totals[1], inner_totals[2], (inner_totals[3] - 
          if inner_totals[0] == inner_wage[0] and inner_totals[1] == inner_wage[1] and
          inner_totals[2] == inner_wage[2]]
 
-# other = []
-#
-# for inner_list1 in totals:
-#     for inner_list2 in wages:
-#         if inner_list1[:3] == inner_list2[:3]:  # Check if first, second, and third elements are identical
-#             other.append([inner_list1[0],
-#                           inner_list1[1],
-#                           inner_list1[2],
-#                           inner_list1[3] - inner_list2[3]])
-#
-#
-print('totals', len(totals), totals)
-print('wages', len(wages), wages)
-print('other', len(other), other)
+def table_lists(array_of_arrays):
+    new_list = [[inner_array1[0], inner_array1[1], inner_array1[3], inner_array2[3], inner_array3[3]]
+                for inner_array1 in array_of_arrays
+                for inner_array2 in array_of_arrays
+                for inner_array3 in array_of_arrays
+                if inner_array1[0] == inner_array2[0] == inner_array3[0] and
+                inner_array1[1] == inner_array2[1] == inner_array3[1]]
+    return new_list
+
+
+totals_for_table = table_lists(totals)
+wages_for_table = table_lists(wages)
+other_for_table = table_lists(other)
+
+print('totals', len(totals_for_table), totals_for_table)
+print('wages', len(wages_for_table), wages_for_table)
+print('other', len(other_for_table), other_for_table)
 
 
 
