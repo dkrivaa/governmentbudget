@@ -65,7 +65,13 @@ wages = [[0, year, budget_type, sum(inner_list[3] for inner_list in total_wage_s
 totals += total_budget_sums
 wages += total_wage_sums
 
-# # Calculating the rest of budget (total - wages)
+# Calculating the rest of budget (total - wages)
+
+other = [[inner_totals[0], inner_totals[1], inner_totals[2], (inner_totals[3] - inner_wage[3])]
+         if inner_totals[0] == inner_wage[0] and inner_totals[1] == inner_wage[1] and
+         inner_totals[2] == inner_wage[2] else [inner_totals[0], inner_totals[1], inner_totals[2], 999]
+         for inner_totals in totals
+         for inner_wage in wages]
 # other = []
 #
 # for inner_list1 in totals:
@@ -79,7 +85,7 @@ wages += total_wage_sums
 #
 print('totals', totals)
 print('wages', wages)
-# print('other', other)
+print('other', other)
 
 
 
