@@ -25,8 +25,7 @@ for year in available_years:
 print('length of mops dataframe', len(mops_df))
 # Make MOPS worksheet in Google file
 try:
-    if book.worksheet('mops'):
-        book.del_worksheet(book.worksheet('mops'))
+    book.del_worksheet(book.worksheet('mops'))
 except gspread.exceptions.WorksheetNotFound:
     pass
 

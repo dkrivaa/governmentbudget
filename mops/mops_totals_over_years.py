@@ -9,6 +9,7 @@ from general import general_functions
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
+print('available years', available_years)
 # Ministry codes for the various orgs in ministry (column index 9) - returns list with lists of codes
 ministry_codes = general_functions.mops_codes()
 # wage codes - columns index 15 and 17 - returns list of codes
