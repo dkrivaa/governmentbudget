@@ -84,9 +84,9 @@ other = [[inner_totals[0], inner_totals[1], inner_totals[2], (inner_totals[3] - 
 #                           inner_list1[3] - inner_list2[3]])
 #
 #
-print('totals', totals)
-print('wages', wages)
-print('other', other)
+print('totals', len(totals), totals)
+print('wages', len(wages), wages)
+print('other', len(other), other)
 
 
 
