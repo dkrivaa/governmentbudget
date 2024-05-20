@@ -68,10 +68,11 @@ wages += total_wage_sums
 # Calculating the rest of budget (total - wages)
 
 other = [[inner_totals[0], inner_totals[1], inner_totals[2], (inner_totals[3] - inner_wage[3])]
-         if inner_totals[0] == inner_wage[0] and inner_totals[1] == inner_wage[1] and
-         inner_totals[2] == inner_wage[2] else [inner_totals[0], inner_totals[1], inner_totals[2], 999]
          for inner_totals in totals
-         for inner_wage in wages]
+         for inner_wage in wages
+         if inner_totals[0] == inner_wage[0] and inner_totals[1] == inner_wage[1] and
+         inner_totals[2] == inner_wage[2]]
+
 # other = []
 #
 # for inner_list1 in totals:
