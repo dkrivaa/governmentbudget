@@ -61,7 +61,7 @@ for index, data in enumerate(df_list):
                 total_wage_sums.append([index + 1, year, budget_type, wage_sum])
 
 totals = [sum(inner_list[3] for inner_list in total_budget_sums if
-            inner_list[1] == year & inner_list[2] == budget_type)
+            inner_list[1] == year and inner_list[2] == budget_type)
             for year in available_years
             for budget_type in types]
 
