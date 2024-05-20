@@ -26,16 +26,6 @@ df_police = df[df.iloc[:, 9].isin(ministry_codes[2])]
 df_prison = df[df.iloc[:, 9].isin(ministry_codes[3])]
 df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 
-ministry_budget = [[year, budget_type, df_ministry[(df_ministry.iloc[:, 0] == int(year)) &
-                                        (df_ministry.iloc[:, 21] == budget_type)].iloc[:, 22].sum()]
-                    for year in available_years
-                    for budget_type in types]
-print('ministry budget', ministry_budget)
-
-ministry_wage = []
-
-
-
 df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 index_list = list(range(len(df_list)))  # Create a list of indices for df_list
 
@@ -48,28 +38,28 @@ total_budget_sums = [[index, year, budget_type,
                      for budget_type in types]
 
 print('total budgets', total_budget_sums)
-#
-# total_wage_sums = []
-#
-# for data in df_list:
-#     for year in available_years:
-#         for budget_type in types:
-#             # Convert year to int for comparison
-#             year = int(year)
-#
-#             # Filter rows based on conditions
-#             filtered_data = data[(data.iloc[:, 0] == year) &
-#                                  (data.iloc[:, 21] == budget_type) &
-#                                  ((data.iloc[:, 15].isin(wage_codes)) |
-#                                   (data.iloc[:, 17].isin(wage_codes)))]
-#
-#             # Check if any rows matched the conditions
-#             if not filtered_data.empty:
-#                 # Sum the values in column 22
-#                 wage_sum = filtered_data.iloc[:, 22].sum()
-#                 # Append to total_wage_sums list
-#                 total_wage_sums.append((year, budget_type, wage_sum))
-#
-# print('total wages', total_wage_sums)
+
+total_wage_sums = []
+
+for index, data in enumerate(df_list):
+    for year in available_years:
+        for budget_type in types:
+            # Convert year to int for comparison
+            year = int(year)
+
+            # Filter rows based on conditions
+            filtered_data = data[(data.iloc[:, 0] == year) &
+                                 (data.iloc[:, 21] == budget_type) &
+                                 ((data.iloc[:, 15].isin(wage_codes)) |
+                                  (data.iloc[:, 17].isin(wage_codes)))]
+
+            # Check if any rows matched the conditions
+            if not filtered_data.empty:
+                # Sum the values in column 22
+                wage_sum = filtered_data.iloc[:, 22].sum()
+                # Append to total_wage_sums list along with the index
+                total_wage_sums.append([index, year, budget_type, wage_sum])
+
+print('total wages', total_wage_sums)
 
 
