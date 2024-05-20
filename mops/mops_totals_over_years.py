@@ -78,19 +78,19 @@ totals += total_budget_sums
 wages += total_wage_sums
 
 # Calculating the rest of budget (total - wages)
-others = []
+other = []
 
 for inner_list1 in totals:
     for inner_list2 in wages:
         if inner_list1[:3] == inner_list2[:3]:  # Check if first, second, and third elements are identical
-            others.append([inner_list1[0],
+            other.append([inner_list1[0],
                           inner_list1[1],
                           inner_list1[2],
                           inner_list1[:3] + [inner_list1[3] - inner_list2[3]]])
 
-print(totals)
-print(wages)
-print(others)
+print('totals', totals)
+print('wages', wages)
+print('other', other)
 
 
 
