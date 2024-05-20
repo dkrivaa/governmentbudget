@@ -4,6 +4,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import gspread
 import pandas as pd
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
+# from gspread_formatting import *
 
 from general import general_functions
 import itertools
@@ -101,6 +102,7 @@ sheet = book.worksheet('results')
 sheet.append_rows(totals_for_table)
 sheet.append_rows(wages_for_table)
 sheet.append_rows(other_for_table)
+sheet.format('C:E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
 
 
 
