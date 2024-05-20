@@ -36,14 +36,16 @@ ministry_wage = []
 
 
 
-# df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
-#
-# # getting list of tuples (year, budget_type, sum)
-# total_budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
-#                                         (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum())
-#                     for data in df_list
-#                     for year in available_years
-#                     for budget_type in types]
+df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
+
+# getting list of tuples (year, budget_type, sum)
+total_budget_sums = [[df_list.index(data), year, budget_type, data[(data.iloc[:, 0] == int(year)) &
+                                        (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum()]
+                    for data in df_list
+                    for year in available_years
+                    for budget_type in types]
+
+print('total budgets', total_budget_sums)
 #
 # total_wage_sums = []
 #
