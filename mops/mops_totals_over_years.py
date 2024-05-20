@@ -29,7 +29,7 @@ df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 index_list = list(range(len(df_list)))  # Create a list of indices for df_list
 
-# getting list of lists (index, year, budget_type, sum)
+# getting list of lists (index (of org df in df_list), year, budget_type, sum of total budget)
 total_budget_sums = [[index, year, budget_type,
                       data[(data.iloc[:, 0] == int(year)) &
                            (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum()]
@@ -37,11 +37,7 @@ total_budget_sums = [[index, year, budget_type,
                      for year in available_years
                      for budget_type in types]
 
-
-for i in range(0, len(total_budget_sums[0])):
-    print('total elements', total_budget_sums[0][i])
-
-
+# getting list of lists (index (of org df in df_list), year, budget_type, sum of total wages)
 total_wage_sums = []
 
 for index, data in enumerate(df_list):
@@ -63,8 +59,7 @@ for index, data in enumerate(df_list):
                 # Append to total_wage_sums list along with the index
                 total_wage_sums.append([index, year, budget_type, wage_sum])
 
-for i in range(0, len(total_wage_sums[0])):
-    print('wage elements', total_wage_sums[0][i])
+
 
 
 
