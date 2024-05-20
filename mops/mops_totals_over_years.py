@@ -35,15 +35,15 @@ total_budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
                     for budget_type in types]
 print('total budgets', total_budget_sums)
 
-# total_wage_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
-#                                     (data.iloc[:, 21] == budget_type) &
-#                                     (data[data.iloc[:, 15].isin(wage_codes) | data[data.iloc[:, 17].isin(wage_codes)]])]
-#                                     .iloc[:, 22].sum())
-#                      for data in df_list
-#                      for year in available_years
-#                      for budget_type in types]
-#
-# print('total wages', total_wage_sums)
+total_wage_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
+                                    (data.iloc[:, 21] == budget_type) &
+                                    (data[data.iloc[:, 15].isin(wage_codes) | data[data.iloc[:, 17].isin(wage_codes)]])]
+                                    .iloc[:, 22].sum())
+                     for data in df_list
+                     for year in available_years
+                     for budget_type in types]
+
+print('total wages', total_wage_sums)
 
 
 
