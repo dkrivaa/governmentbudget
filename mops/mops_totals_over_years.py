@@ -29,7 +29,7 @@ df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 
 for data in df_list:
     for year in available_years:
-        budget = data[data.iloc[:, 0] == year].iloc[:, 22].sum()
+        budget = data[data.iloc[:, 0] == int(year)].iloc[:, 22].sum()
         print(budget)
 
 # budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == year) &
