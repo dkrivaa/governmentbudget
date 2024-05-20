@@ -86,7 +86,7 @@ for inner_list1 in totals:
             other.append([inner_list1[0],
                           inner_list1[1],
                           inner_list1[2],
-                          inner_list1[:3] + [inner_list1[3] - inner_list2[3]]])
+                          inner_list1[3] - inner_list2[3]])
 
 print('totals', totals)
 print('wages', wages)
