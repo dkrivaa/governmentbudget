@@ -34,7 +34,7 @@ df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 #                     for budget_type in types]
 # print('total budgets', total_budget_sums)
 
-test_sum = df_ministry.iloc[df_ministry[:, 15].isin(wage_codes)].sum()
+test_sum = df_ministry[df_ministry.iloc[:, 15].isin(wage_codes)].sum()
 print(test_sum)
 
 # total_wage_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
