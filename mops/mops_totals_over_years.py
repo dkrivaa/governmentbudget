@@ -92,11 +92,6 @@ totals_for_table = table_lists(totals)
 wages_for_table = table_lists(wages)
 other_for_table = table_lists(other)
 
-# Making dataframes
-df_totals = pd.DataFrame(totals_for_table, columns=['גוף', 'שנה', 'תקציב מקורי', 'תקציב מאושר', 'ביצוע'])
-df_wages = pd.DataFrame(wages_for_table, columns=['גוף', 'שנה', 'תקציב מקורי', 'תקציב מאושר', 'ביצוע'])
-df_other = pd.DataFrame(other_for_table, columns=['גוף', 'שנה', 'תקציב מקורי', 'תקציב מאושר', 'ביצוע'])
-
 # writing results to google sheet
 sheet = book.worksheet('results')
 sheet.append_rows(totals_for_table)
