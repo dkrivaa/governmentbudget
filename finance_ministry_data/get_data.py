@@ -64,7 +64,7 @@ for file in files:
     print(name, type(name))
     # if worksheet exist then delete and make new with the same name with updated data
     try:
-        if book.worksheet(f'{name}'):
+        if book.worksheet(name):
             book.del_worksheet(book.worksheet(f'{name}'))
     except gspread.exceptions.WorksheetNotFound:
         pass
