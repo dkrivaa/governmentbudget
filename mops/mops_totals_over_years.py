@@ -72,6 +72,11 @@ wages = [[0, year, budget_type, sum(inner_list[3] for inner_list in total_budget
             for year in available_years
             for budget_type in types]
 
+
+# Combining the totals and the wages
+totals += total_budget_sums
+wages += total_wage_sums
+
 print(totals)
 print(wages)
 
