@@ -28,8 +28,7 @@ df_fire = df[df.iloc[:, 9].isin(ministry_codes[4])]
 df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 
 for data in df_list:
-    budget_sum = data.iloc[:, 22].sum()
-    print(df_list.index(data), budget_sum)
+    print(type(data))
 
 # budget_sums = [(year, budget_type, data[(data.iloc[:, 0] == year) &
 #                                         (data.iloc[:, 21] == budget_type)].iloc[:, 22].sum())
