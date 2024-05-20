@@ -62,11 +62,9 @@ files = ['finance_ministry_data/2015.xlsx', 'finance_ministry_data/2016.xlsx',
 for file in files:
     name, df = make_Google_sheets(file)
     print(name, type(name))
-    print(book.worksheet(f'{name}'))
     # if worksheet exist then delete and make new with the same name with updated data
     try:
-        if book.worksheet(f'{name}'):
-            book.del_worksheet(book.worksheet(f'{name}'))
+        book.del_worksheet(book.worksheet(f'{name}'))
     except gspread.exceptions.WorksheetNotFound:
         pass
 
