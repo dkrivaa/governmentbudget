@@ -39,7 +39,7 @@ df_list = [df_ministry, df_witness, df_police, df_prison, df_fire]
 
 total_wage_sums = [(year, budget_type, data[(data.iloc[:, 0] == int(year)) &
                     (data.iloc[:, 21] == budget_type) &
-                    (data[data.iloc[:, 15].isin(wage_codes) | data[data.iloc[:, 17].isin(wage_codes)]])]
+                    (data[data.iloc[:, 15].isin(wage_codes) | data.iloc[:, 17].isin(wage_codes)])]
                     .iloc[:, 22].sum())
                  for data in df_list
                  for year in available_years
