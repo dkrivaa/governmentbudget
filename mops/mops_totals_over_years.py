@@ -80,12 +80,19 @@ def table_lists(array_of_arrays):
                 for inner_array1, inner_array2, inner_array3 in itertools.combinations(array_of_arrays, 3)
                 if inner_array1[0] == inner_array2[0] == inner_array3[0] and
                 inner_array1[1] == inner_array2[1] == inner_array3[1]]
+    organizations = ['כלל המשרד', 'משרד ראשי', 'הגנת עדים', 'משטרת ישראל', 'שירות בתי הסוהר', '']
+    for array in new_list:
+        array[0] = organizations[array[0]]
     return new_list
 
 
+# Combining the original, approved and executed into a single list in list of lists
 totals_for_table = table_lists(totals)
 wages_for_table = table_lists(wages)
 other_for_table = table_lists(other)
+
+# Making dataframes
+# df_totals = pd.DataFrame(totals_for_table, columns=['organization'])
 
 print('totals', len(totals_for_table), totals_for_table)
 print('wages', len(wages_for_table), wages_for_table)
