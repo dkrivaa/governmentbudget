@@ -62,7 +62,8 @@ for index, data in enumerate(df_list):
                 # Append to total_wage_sums list along with the index
                 total_wage_sums.append([index + 1, year, budget_type, wage_sum])
 
-
+print('total', total_budget_sums)
+print('wage', total_wage_sums)
 
 
 
