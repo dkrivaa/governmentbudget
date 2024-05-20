@@ -46,6 +46,7 @@ def mops_codes():
 def wage_codes():
     # general wage codes - column index 15, column index 17,
     wage = [1, 30]
+    return wage
 
 
 # codes for types of budgets
