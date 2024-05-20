@@ -37,8 +37,6 @@ total_budget_sums = [[index + 1, year, budget_type,
                      for year in available_years
                      for budget_type in types]
 
-totals = []
-
 
 # getting list of lists (index (of org df in df_list), year, budget_type, sum of total wages)
 total_wage_sums = []
@@ -62,8 +60,14 @@ for index, data in enumerate(df_list):
                 # Append to total_wage_sums list along with the index
                 total_wage_sums.append([index + 1, year, budget_type, wage_sum])
 
-print('total', total_budget_sums)
-print('wage', total_wage_sums)
+totals = [sum(inner_list[3] for inner_list in total_budget_sums if
+            inner_list[1] == year & inner_list[2] == budget_type)
+            for year in available_years
+            for budget_type in types]
+
+print(totals)
+
+
 
 
 
