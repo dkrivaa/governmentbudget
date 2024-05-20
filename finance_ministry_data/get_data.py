@@ -38,6 +38,10 @@ def make_Google_sheets(url):
         else:
             name = file[-9:-5]
 
+        # Correcting year for 20241
+        if name == 20241:
+            df.iloc[:, 0] = 20241
+
         return name, df
 
     except Exception as e:
