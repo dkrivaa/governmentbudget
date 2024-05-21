@@ -11,6 +11,16 @@ import itertools
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
-print(available_years)
-# df_2024 = get_as_dataframe(book.worksheet('2024'))
+
+df_2024 = get_as_dataframe(book.worksheet('2024'))
+
+column_1 = df_2024.columns[1]
+column_2 = df_2024.columns[2]
+
+# Get unique pairs of values from 'column1' and 'column2'
+unique_pairs = df_2024[['column_1', 'column_2']].drop_duplicates()
+
+# Convert to list of tuples if needed
+macro_codes_list = list(unique_pairs.itertuples(index=False, name=None))
+print(macro_codes_list)
 
