@@ -12,20 +12,11 @@ import itertools
 
 # Check if the command-line argument is provided
 if len(sys.argv) < 2:
-    print('sys.argv', sys.argv)
     print("Usage: python mops_organization_budget.py ORGANIZATION")
     sys.exit(1)
 
 # Get the value of the ORGANIZATION argument chosen by user
 organization_code = sys.argv[1]
-organization = ''
-
-if organization_code is not None:
-    organization_list = ['ministry', 'witness', 'police', 'prison', 'fire']
-    organization = organization_list[int(organization_code)]
-    print('organization', organization)
-else:
-    print('code not passed')
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
@@ -36,9 +27,8 @@ wage_codes = general_functions.wage_codes()
 # budget types - returns list of lists of codes
 types = general_functions.budget_types()
 
-
-
 # making dataframe with all mops data for all years
 df = get_as_dataframe(book.worksheet('mops'))
-
+# Keeping only data for organization chosen
+df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
 
