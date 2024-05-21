@@ -41,7 +41,7 @@ program_budgets = [[group,
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
-                    for group, group_df in df.groupby([column_0, column_12])]
+                for group, group_df in df.groupby([column_0, column_12])]
 
 # programs_budgets = [[group, sum(group_df.iloc[:, 22])]
 #                     for group, group_df in df.groupby([column_0, column_12, column_21])]
