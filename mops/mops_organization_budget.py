@@ -50,4 +50,5 @@ for program_item in program_budgets:
     flattened_list = [item for sublist in program_item for item in (sublist if isinstance(sublist, list) else [sublist])]
     table_data.append(flattened_list)
 
+print(len(table_data))
 print(table_data)
