@@ -32,7 +32,7 @@ df_level2 = pd.DataFrame(level2_budgets, columns=['code1', 'area1', 'code2', 'ar
 
 # writing results to google sheet
 sheet = book.worksheet('results')
-set_with_dataframe(df_level1, sheet)
+set_with_dataframe(sheet, df_level1)
 sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-set_with_dataframe(df_level2, sheet)
+set_with_dataframe(sheet, df_level2)
 sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
