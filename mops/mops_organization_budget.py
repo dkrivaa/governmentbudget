@@ -31,24 +31,23 @@ types = general_functions.budget_types()
 df = get_as_dataframe(book.worksheet('mops'))
 # Keeping only data for organization chosen
 df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
-
+# Getting names of columns
 column_0 = df.columns[0]
 column_11 = df.columns[11]
 column_12 = df.columns[12]
 column_21 = df.columns[21]
 column_22 = df.columns[22]
-
-# program_names = df[df.iloc[:, 0] == 2024][column_12].unique().tolist()
-# program_numbers = df[column_11].unique().tolist()
-# print('program_names', len(program_names), program_names)
-# print('programs numbers', len(program_numbers), program_numbers)
-
+# Making list of lists of programs (tochniot)
 program_budgets = [[list(group),
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
-                for group, group_df in df.groupby([column_11, column_0, column_12])]
+                    for group, group_df in df.groupby([column_11, column_0, column_12])]
 
+# Making array of arrays for table
+table_data = []
+for program_item in program_budgets:
+    flattened_list = [item for sublist in program_item for item in (sublist if isinstance(sublist, list) else [sublist])]
+    table_data.append(flattened_list)
 
-
-print(program_budgets)
+print(table_data)
