@@ -3,6 +3,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import gspread
 import pandas as pd
+import numpy as np
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 # from gspread_formatting import *
 
@@ -47,7 +48,19 @@ program_budgets = [[list(group),
 # Making array of arrays for table
 table_data = []
 for program_item in program_budgets:
-    flattened_list = [item for sublist in program_item for item in (sublist if isinstance(sublist, list) else [sublist])]
+    flattened_list = []
+    for sublist in program_item:
+        if isinstance(sublist, list):
+            for item in sublist:
+                if isinstance(item, np.int64):  # Check if the item is of type int64
+                    flattened_list.append(int(item))  # Convert it to a standard Python int
+                else:
+                    flattened_list.append(item)
+        else:
+            if isinstance(sublist, np.int64):  # Check if the item is of type int64
+                flattened_list.append(int(sublist))  # Convert it to a standard Python int
+            else:
+                flattened_list.append(sublist)
     table_data.append(flattened_list)
 
 # writing results to google sheet
