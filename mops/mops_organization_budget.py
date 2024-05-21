@@ -35,7 +35,14 @@ df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
 column_0 = df.columns[0]
 column_12 = df.columns[12]
 column_21 = df.columns[21]
+column_22 = df.columns[22]
 
-programs_budgets = [[group, sum(group_df.iloc[:, 22])]
-                    for group, group_df in df.groupby([column_0, column_12, column_21])]
-print(programs_budgets)
+program_budgets = [[group,
+                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
+                    for group, group_df in df.groupby([column_0, column_12])]
+
+# programs_budgets = [[group, sum(group_df.iloc[:, 22])]
+#                     for group, group_df in df.groupby([column_0, column_12, column_21])]
+print(program_budgets)
