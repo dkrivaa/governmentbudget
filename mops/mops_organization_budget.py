@@ -33,8 +33,9 @@ df = get_as_dataframe(book.worksheet('mops'))
 df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
 
 column_0 = df.columns[0]
-columns_12 = df.columns[12]
+column_12 = df.columns[12]
+column_21 = df.columns[21]
 
 programs_budgets = [[group, sum(group_df.iloc[:, 22])]
-                    for group, group_df in df.groupby([column_0, columns_12])]
+                    for group, group_df in df.groupby([column_0, column_12, column_21])]
 print(programs_budgets)
