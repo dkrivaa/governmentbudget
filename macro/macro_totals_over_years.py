@@ -24,10 +24,5 @@ macro_budgets = [[group[0], group[1],
                     for group, group_df in df_2024.groupby([column_1, column_2])]
 
 print(macro_budgets)
-# # Get unique pairs of values from 'column1' and 'column2'
-# unique_pairs = df_2024[[column_1, column_2]].drop_duplicates()
-#
-# # Convert to list of lists
-# macro_codes_list = unique_pairs.values.tolist()
-# print(macro_codes_list)
+
 
