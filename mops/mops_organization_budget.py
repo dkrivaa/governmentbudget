@@ -31,7 +31,8 @@ types = general_functions.budget_types()
 df = get_as_dataframe(book.worksheet('mops'))
 # Keeping only data for organization chosen
 df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
+print(len(df))
 
-programs_budgets = [(group, sum(group_df.iloc[:, 22]))
-                    for group, group_df in df.groupby([0, 11])]
-print(programs_budgets)
+# programs_budgets = [(group, sum(group_df.iloc[:, 22]))
+#                     for group, group_df in df.groupby([0, 11])]
+# print(programs_budgets)
