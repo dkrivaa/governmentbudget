@@ -35,6 +35,6 @@ df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
 column_0 = df.columns[0]
 columns_11 = df.columns[11]
 
-programs_budgets = [(group, sum(group_df.iloc[:, 22]))
+programs_budgets = [[group, sum(group_df.iloc[:, 22])]
                     for group, group_df in df.groupby([column_0, columns_11])]
 print(programs_budgets)
