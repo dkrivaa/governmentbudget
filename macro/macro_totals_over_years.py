@@ -20,7 +20,7 @@ column_2 = df_2024.columns[2]
 # Get unique pairs of values from 'column1' and 'column2'
 unique_pairs = df_2024[[column_1, column_2]].drop_duplicates()
 
-# Convert to list of tuples if needed
-macro_codes_list = list(unique_pairs.itertuples(index=False, name=None))
+# Convert to list of lists
+macro_codes_list = unique_pairs.values.tolist()
 print(macro_codes_list)
 
