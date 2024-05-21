@@ -11,6 +11,6 @@ import itertools
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
-
-df_2024 = get_as_dataframe(book.worksheet('2024'))
+print(available_years)
+# df_2024 = get_as_dataframe(book.worksheet('2024'))
 
