@@ -9,8 +9,15 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 from general import general_functions
 import itertools
 
-# Getting the code for the organization chosen by user
-organization_code = os.environ.get('ORGANIZATION')
+
+# Check if the command-line argument is provided
+if len(sys.argv) < 2:
+    print("Usage: python mops_organization_budget.py ORGANIZATION")
+    sys.exit(1)
+
+# Get the value of the ORGANIZATION argument
+organization_code = sys.argv[1]
+
 organization = 'ministry'
 if organization_code is not None:
     organization_list = ['ministry', 'witness', 'police', 'prison', 'fire']
