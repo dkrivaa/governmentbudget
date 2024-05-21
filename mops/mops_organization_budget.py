@@ -50,11 +50,7 @@ for program_item in program_budgets:
     flattened_list = [item for sublist in program_item for item in (sublist if isinstance(sublist, list) else [sublist])]
     table_data.append(flattened_list)
 
-print(len(table_data))
-print('index 0', table_data[0][0])
-print('index 1', table_data[0][1])
-print('index 2', table_data[0][2])
-print('index 3', table_data[0][3])
-print('index 4', table_data[0][4])
-print('index 5', table_data[0][5])
-print(table_data)
+# writing results to google sheet
+sheet = book.worksheet('results')
+sheet.append_rows(table_data)
+sheet.format('D:F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
