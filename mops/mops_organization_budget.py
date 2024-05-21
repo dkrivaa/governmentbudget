@@ -55,25 +55,25 @@ print(takanot_budget)
 #                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
 #                     for group, group_df in df.groupby([column_11, column_0, column_12])]
 #
-# # Making array of arrays for table
-# table_data = []
-# for program_item in program_budgets:
-#     flattened_list = []
-#     for sublist in program_item:
-#         if isinstance(sublist, list):
-#             for item in sublist:
-#                 if isinstance(item, np.int64):  # Check if the item is of type int64
-#                     flattened_list.append(int(item))  # Convert it to a standard Python int
-#                 else:
-#                     flattened_list.append(item)
-#         else:
-#             if isinstance(sublist, np.int64):  # Check if the item is of type int64
-#                 flattened_list.append(int(sublist))  # Convert it to a standard Python int
-#             else:
-#                 flattened_list.append(sublist)
-#     table_data.append(flattened_list)
+# Making array of arrays for table
+table_data = []
+for takana_item in takanot_budget:
+    flattened_list = []
+    for sublist in takana_item:
+        if isinstance(sublist, list):
+            for item in sublist:
+                if isinstance(item, np.int64):  # Check if the item is of type int64
+                    flattened_list.append(int(item))  # Convert it to a standard Python int
+                else:
+                    flattened_list.append(item)
+        else:
+            if isinstance(sublist, np.int64):  # Check if the item is of type int64
+                flattened_list.append(int(sublist))  # Convert it to a standard Python int
+            else:
+                flattened_list.append(sublist)
+    table_data.append(flattened_list)
 
 # writing results to google sheet
-# sheet = book.worksheet('results')
-# sheet.append_rows(table_data)
-# sheet.format('D:F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+sheet = book.worksheet('results')
+sheet.append_rows(table_data)
+sheet.format('D:F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
