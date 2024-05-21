@@ -31,3 +31,10 @@ level2_budgets = [[group[0], group[1], group[2], group[3],
                     for group, group_df in df_2024.groupby([column_1, column_2, column_3, column_4])]
 
 print('level2_budgets', level2_budgets)
+
+# writing results to google sheet
+sheet = book.worksheet('results')
+sheet.append_rows(level1_budgets)
+sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+sheet.append_rows(level2_budgets)
+sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
