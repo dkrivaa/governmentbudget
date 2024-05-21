@@ -38,16 +38,16 @@ column_12 = df.columns[12]
 column_21 = df.columns[21]
 column_22 = df.columns[22]
 
-program_names = df[df.iloc[:, 0] == 2024][column_12].unique().tolist()
-program_numbers = df[column_11].unique().tolist()
-print('program_names', len(program_names), program_names)
-print('programs numbers', len(program_numbers), program_numbers)
+# program_names = df[df.iloc[:, 0] == 2024][column_12].unique().tolist()
+# program_numbers = df[column_11].unique().tolist()
+# print('program_names', len(program_names), program_names)
+# print('programs numbers', len(program_numbers), program_numbers)
 
 program_budgets = [[list(group),
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
-                for group, group_df in df.groupby([column_11, column_0])]
+                for group, group_df in df.groupby([column_11, column_0, column_12])]
 
 
 
