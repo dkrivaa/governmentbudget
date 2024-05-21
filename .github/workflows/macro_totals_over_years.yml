@@ -35,7 +35,7 @@ jobs:
         run: |
           pip install -r requirements.txt 
 
-      - name: mops organization budget
+      - name: macro totals
         run: |
           python macro/macro_totals_over_years.py ${{ github.event.inputs.ORGANIZATION }}
           
