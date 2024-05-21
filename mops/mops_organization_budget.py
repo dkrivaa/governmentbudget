@@ -34,34 +34,42 @@ df = get_as_dataframe(book.worksheet('mops'))
 df = df[df.iloc[:, 9].isin(ministry_codes[int(organization_code)])]
 # Getting names of columns
 column_0 = df.columns[0]
-column_11 = df.columns[11]
-column_12 = df.columns[12]
+column_13 = df.columns[13]
+column_14 = df.columns[14]
 column_21 = df.columns[21]
 column_22 = df.columns[22]
-# Making list of lists of programs (tochniot)
-program_budgets = [[list(group),
-                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
-                    group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
-                    group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
-                    for group, group_df in df.groupby([column_11, column_0, column_12])]
 
-# Making array of arrays for table
-table_data = []
-for program_item in program_budgets:
-    flattened_list = []
-    for sublist in program_item:
-        if isinstance(sublist, list):
-            for item in sublist:
-                if isinstance(item, np.int64):  # Check if the item is of type int64
-                    flattened_list.append(int(item))  # Convert it to a standard Python int
-                else:
-                    flattened_list.append(item)
-        else:
-            if isinstance(sublist, np.int64):  # Check if the item is of type int64
-                flattened_list.append(int(sublist))  # Convert it to a standard Python int
-            else:
-                flattened_list.append(sublist)
-    table_data.append(flattened_list)
+# Making list of lists for takanot
+takanot_budget = [[list(group),
+                    group_df.loc[group_df[column_21] == 'מקורי', column_22],
+                    group_df.loc[group_df[column_21] == 'מאושר', column_22],
+                    group_df.loc[group_df[column_21] == 'ביצוע', column_22]]
+                    for group, group_df in df.groupby([column_13, column_0, column_14])]
+
+# # Making list of lists of programs (tochniot)
+# program_budgets = [[list(group),
+#                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
+#                     group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
+#                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
+#                     for group, group_df in df.groupby([column_11, column_0, column_12])]
+#
+# # Making array of arrays for table
+# table_data = []
+# for program_item in program_budgets:
+#     flattened_list = []
+#     for sublist in program_item:
+#         if isinstance(sublist, list):
+#             for item in sublist:
+#                 if isinstance(item, np.int64):  # Check if the item is of type int64
+#                     flattened_list.append(int(item))  # Convert it to a standard Python int
+#                 else:
+#                     flattened_list.append(item)
+#         else:
+#             if isinstance(sublist, np.int64):  # Check if the item is of type int64
+#                 flattened_list.append(int(sublist))  # Convert it to a standard Python int
+#             else:
+#                 flattened_list.append(sublist)
+#     table_data.append(flattened_list)
 
 # writing results to google sheet
 sheet = book.worksheet('results')
