@@ -12,7 +12,7 @@ import itertools
 
 # Check if the command-line argument is provided
 if len(sys.argv) < 2:
-    print(sys.argv)
+    print('sys.argv', sys.argv)
     print("Usage: python mops_organization_budget.py ORGANIZATION")
     sys.exit(1)
 
