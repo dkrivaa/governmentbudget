@@ -2,6 +2,10 @@ name: mops organization budget
 
 on:
   workflow_dispatch:
+    inputs:
+      ORGANIZATION:
+        description: 'organization'
+        required: true
 
 env:
   # Google sheet secrets
