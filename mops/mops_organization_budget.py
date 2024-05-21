@@ -46,6 +46,8 @@ takanot_budget = [[list(group),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22]]
                     for group, group_df in df.groupby([column_13, column_0, column_14])]
 
+print(takanot_budget)
+
 # # Making list of lists of programs (tochniot)
 # program_budgets = [[list(group),
 #                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
@@ -72,6 +74,6 @@ takanot_budget = [[list(group),
 #     table_data.append(flattened_list)
 
 # writing results to google sheet
-sheet = book.worksheet('results')
-sheet.append_rows(table_data)
-sheet.format('D:F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+# sheet = book.worksheet('results')
+# sheet.append_rows(table_data)
+# sheet.format('D:F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
