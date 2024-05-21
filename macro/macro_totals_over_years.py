@@ -16,11 +16,20 @@ df_2024 = get_as_dataframe(book.worksheet('2024'))
 
 column_1 = df_2024.columns[1]
 column_2 = df_2024.columns[2]
+column_21 = df_2024.columns[21]
+column_22 = df_2024.columns[22]
 
-# Get unique pairs of values from 'column1' and 'column2'
-unique_pairs = df_2024[[column_1, column_2]].drop_duplicates()
+macro_budgets = [[group,
+                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
+                    for group, group_df in df_2024.groupby([column_1, column_2])]
 
-# Convert to list of lists
-macro_codes_list = unique_pairs.values.tolist()
-print(macro_codes_list)
+print(macro_budgets)
+# # Get unique pairs of values from 'column1' and 'column2'
+# unique_pairs = df_2024[[column_1, column_2]].drop_duplicates()
+#
+# # Convert to list of lists
+# macro_codes_list = unique_pairs.values.tolist()
+# print(macro_codes_list)
 
