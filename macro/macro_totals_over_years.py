@@ -19,10 +19,8 @@ column_2 = df_2024.columns[2]
 column_21 = df_2024.columns[21]
 column_22 = df_2024.columns[22]
 
-macro_budgets = [[group,
-                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
-                    group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
-                    group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
+macro_budgets = [[group[0], group[1],
+                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum()]
                     for group, group_df in df_2024.groupby([column_1, column_2])]
 
 print(macro_budgets)
