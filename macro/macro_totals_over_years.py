@@ -23,18 +23,16 @@ column_22 = df_2024.columns[22]  # net budget
 level1_budgets = [[group[0], group[1],
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum()]
                     for group, group_df in df_2024.groupby([column_1, column_2])]
-
-print('macro_budgets', level1_budgets)
+df_level1 = pd.DataFrame(level1_budgets, columns=['code1', 'area1', 'budget'])
 
 level2_budgets = [[group[0], group[1], group[2], group[3],
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum()]
                     for group, group_df in df_2024.groupby([column_1, column_2, column_3, column_4])]
-
-print('level2_budgets', level2_budgets)
+df_level2 = pd.DataFrame(level2_budgets, columns=['code1', 'area1', 'code2', 'area2', 'budget'])
 
 # writing results to google sheet
 sheet = book.worksheet('results')
-sheet.append_rows(level1_budgets)
+set_with_dataframe(df_level1, sheet)
 sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-sheet.append_rows(level2_budgets)
+set_with_dataframe(df_level2, sheet)
 sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
