@@ -47,7 +47,6 @@ program_budgets = [[list(group),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
                 for group, group_df in df.groupby([column_11, column_0])]
 
-for item in program_budgets:
 
 
 print(program_budgets)
