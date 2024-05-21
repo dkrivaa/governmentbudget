@@ -15,7 +15,10 @@ organization = 'ministry'
 if organization_code is not None:
     organization_list = ['ministry', 'witness', 'police', 'prison', 'fire']
     organization = organization_list[int(organization_code)-1]
-print('organization_code', organization_code)
+    print('organization_code', organization_code)
+
+else:
+    print('code not passed')
 
 # # Opening workbook
 # book, available_years = general_functions.openGoogle()
