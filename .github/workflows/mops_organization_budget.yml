@@ -37,5 +37,5 @@ jobs:
 
       - name: mops organization budget
         run: |
-          python mops/mops_organization_budget.py ${{ env.ORGANIZATION }}
+          python mops/mops_organization_budget.py ${{ github.event.inputs.ORGANIZATION }}
           
