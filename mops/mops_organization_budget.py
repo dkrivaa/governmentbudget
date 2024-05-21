@@ -20,9 +20,9 @@ organization_code = sys.argv[1]
 
 organization = 'ministry'
 if organization_code is not None:
-    # organization_list = ['ministry', 'witness', 'police', 'prison', 'fire']
-    # organization = organization_list[int(organization_code)-1]
-    print('organization_code', organization_code)
+    organization_list = ['ministry', 'witness', 'police', 'prison', 'fire']
+    organization = organization_list[int(organization_code)-1]
+    print('organization', organization)
 
 else:
     print('code not passed')
