@@ -41,9 +41,9 @@ column_22 = df.columns[22]
 
 # Making list of lists for takanot
 takanot_budget = [[list(group),
-                    group_df.loc[group_df[column_21] == 'מקורי', column_22],
-                    group_df.loc[group_df[column_21] == 'מאושר', column_22],
-                    group_df.loc[group_df[column_21] == 'ביצוע', column_22]]
+                    group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
+                    group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
                     for group, group_df in df.groupby([column_13, column_0, column_14])]
 
 print(takanot_budget)
