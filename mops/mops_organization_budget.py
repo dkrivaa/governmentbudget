@@ -37,7 +37,7 @@ column_11 = df.columns[11]
 column_21 = df.columns[21]
 column_22 = df.columns[22]
 
-program_budgets = [[group,
+program_budgets = [[list(group),
                     group_df.loc[group_df[column_21] == 'מקורי', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'מאושר', column_22].sum(),
                     group_df.loc[group_df[column_21] == 'ביצוע', column_22].sum()]
