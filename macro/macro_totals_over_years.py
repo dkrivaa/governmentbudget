@@ -10,6 +10,8 @@ from general import general_functions
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
+# Get the value of the year argument chosen by user
+year = sys.argv[1]
 
 def macro_for_year(year):
     year = str(year)
@@ -34,19 +36,9 @@ def macro_for_year(year):
 
     # writing results to google sheet
     sheet = book.worksheet('results')
-    if int(year) == 2024:
-        set_with_dataframe(sheet, df_level1)
-        sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-        set_with_dataframe(sheet, df_level2, row=11, col=1)
-        sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-    else:
-        # df_level1 = df_level1.drop(df.columns[[0, 1]], axis=1)
-        set_with_dataframe(sheet, df_level1, row=1, col=4)
-        sheet.format('D', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+    set_with_dataframe(sheet, df_level1)
+    sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+    set_with_dataframe(sheet, df_level2, row=11, col=1)
+    sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
 
-        # df_level2 = df_level2.drop(df.columns[[0, 1, 2, 3]], axis=1)
-        set_with_dataframe(sheet, df_level2, row=11, col=6)
-        sheet.format('F', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-
-macro_for_year(2024)
-macro_for_year(20241)
+macro_for_year(year)
