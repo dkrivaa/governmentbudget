@@ -36,7 +36,8 @@ def macro_for_year(year):
                         for group, group_df in df.groupby([column_1, column_2, column_3, column_4])]
     df_level2 = pd.DataFrame(level2_budgets, columns=['code1', 'area1', 'code2', 'area2', f'budget{year}'])
 
-    df_level2['code'] = df_level2['code1'] + df_level2['code2']
+    df_level2['code'] = str(df_level2['code1']) + str(df_level2['code2'])
+
 
 
 
