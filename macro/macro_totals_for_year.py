@@ -7,6 +7,7 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 # from gspread_formatting import *
 
 from general import general_functions
+from game import macro_assumptions
 
 # Opening workbook
 book, available_years = general_functions.openGoogle()
@@ -34,6 +35,8 @@ def macro_for_year(year):
                         group_df.loc[group_df[column_21] == 'מקורי', column_22].sum()]
                         for group, group_df in df.groupby([column_1, column_2, column_3, column_4])]
     df_level2 = pd.DataFrame(level2_budgets, columns=['code1', 'area1', 'code2', 'area2', f'budget{year}'])
+
+    df_level2['code'] = df_level2['code1'] + df_level2['code2']
 
 
 
