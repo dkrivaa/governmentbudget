@@ -40,7 +40,7 @@ def macro_for_year(year):
         set_with_dataframe(sheet, df_level2, row=11, col=1)
         sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
     else:
-        df_level1 = df_level1.drop(df.columns[[0, 1]], axis=1)
+        # df_level1 = df_level1.drop(df.columns[[0, 1]], axis=1)
         print(df_level1)
         # set_with_dataframe(sheet, df_level1, row=1, col=4)
         # sheet.format('D', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
