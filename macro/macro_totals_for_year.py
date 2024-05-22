@@ -35,11 +35,16 @@ def macro_for_year(year):
                         for group, group_df in df.groupby([column_1, column_2, column_3, column_4])]
     df_level2 = pd.DataFrame(level2_budgets, columns=['code1', 'area1', 'code2', 'area2', f'budget{year}'])
 
+
+
+
     # writing results to google sheet
-    sheet = book.worksheet('results')
-    set_with_dataframe(sheet, df_level1)
-    sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
-    set_with_dataframe(sheet, df_level2, row=11, col=1)
-    sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+    # sheet = book.worksheet('results')
+    # set_with_dataframe(sheet, df_level1)
+    # sheet.format('C', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
+    # set_with_dataframe(sheet, df_level2, row=11, col=1)
+    # sheet.format('E', {'numberFormat': {'type': 'NUMBER', 'pattern': '#,###'}})
 
 macro_for_year(year)
+
+
