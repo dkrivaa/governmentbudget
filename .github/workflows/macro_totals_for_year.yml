@@ -1,4 +1,4 @@
-name: macro over years
+name: macro for year
 
 on:
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
         run: |
           pip install -r requirements.txt 
 
-      - name: macro totals
+      - name: macro totals for chosen year
         run: |
-          python macro/macro_totals_over_years.py ${{ github.event.inputs.PARAM1 }}
+          python macro/macro_totals_for_year.py ${{ github.event.inputs.PARAM1 }}
           
