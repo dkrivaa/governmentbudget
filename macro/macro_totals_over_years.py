@@ -13,6 +13,7 @@ book, available_years = general_functions.openGoogle()
 # Get the value of the year argument chosen by user
 year = sys.argv[1]
 
+
 def macro_for_year(year):
     year = str(year)
     df = get_as_dataframe(book.worksheet(year))
