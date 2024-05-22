@@ -3,8 +3,8 @@ name: mops organization budget
 on:
   workflow_dispatch:
     inputs:
-      ORGANIZATION:
-        description: 'organization'
+      PARAM1:
+        description: 'parameter1'
         required: true
 
 env:
@@ -37,5 +37,5 @@ jobs:
 
       - name: mops organization budget
         run: |
-          python mops/mops_organization_budget.py ${{ github.event.inputs.ORGANIZATION }}
+          python mops/mops_organization_budget.py ${{ github.event.inputs.PARAM1 }}
           
